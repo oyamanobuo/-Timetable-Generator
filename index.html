@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="TT計算機">
+<link rel="apple-touch-icon" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAC0ALQDASIAAhEBAxEB/8QAHQAAAgICAwEAAAAAAAAAAAAAAAcGCAQJAgMFAf/EAFwQAAEDAwICBAcIDQUKDwAAAAECAwQABREGIQcSCBMxQRQiUWGBlNIVGDJWcZGV0QkWFyMzQlJUVWKSk5ZyobHD0zY3OFNXdHWCweIkJURFY2VmdoOisrPC4fD/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAQQCAwYFB//EADgRAAEDAgQCBggGAgMAAAAAAAEAAgMEEQUSITETUQYUQVJhgRYycZGSsdHwFSJTVFWho7JicsH/2gAMAwEAAhEDEQA/ALkisDUF5tWn7RIu97uEe3wIyed6Q+sJQgecn+jvo1FeLdp+xzb3d5SIkCEyp+Q8vsQhIyT/APXfWtXpHca75xV1NzK66BYobhNutxV+D7R1rmNi8R378meUd5JE8uLnTFWl9yBw6tzTbI2FzuDZUtfbu2xkco7CCsg7/BqtmqeL3EXUspT931hfJPMgJLfhq2mx29jbXIgdvkqBnc5NFEXJ1xbrinHFqWtRypSjkk/LXGu9mM46nmSpkD9d5CT8xIrn4C9+XG9Zb9qiLForK8Be/Ljest+1R4C9+XG9Zb9qiLForK8Be/Ljest+1R4C9+XG9Zb9qiLForK8Be/Ljest+1XB6M40nmUpkgnHiPIWfmBNEXRRXczGcdTzJU0BnHjupQf5yK7PAXvy43rLftURYtFZXgL35cb1lv2qPAXvy43rLftURYtFZXgL35cb1lv2qPAXvy43rLftURZdh1DerEtS7RdJ0FROcxpTrJz5fEUKcXDbpQ8TdKuMMTbyb9CQEpUxdh1pIB3w8kBxJx3nn+Skl4C9+XG9Zb9quD0ZxpPMpTJH6jyFH5gTRFs04HcfNHcUENwWV+5GoOrCl2yS4CV7bllY2dAwezBHeBTbzWnGBMkwZTUmK+4y6y4l1tbaylSFpOUqSRulQPYRuK2E9EPjuriRbFaY1KtI1NBZ50P7AXBkbFeB2OJ25gAAchQ7SARWGooooipz9kH4iuIMLh1Adw0lCJ1zA7FqJPUNnzDlU4R+qny1S8kk5O5qd8fr+/qXi5qa7vqbX4RdJHVlI7G0L6psefxGk/OagdERXZFbDshttSghKlAFR7EjvPorrr2NIWx686gh2qMoJkTn24bJKcjneWGxt37KJ9FEWxnol6ThWrgLp1yXAhuSbk2u5OKLCTs8srQN/IgpHopr+5Fq/RkH1dH1VztMJq22uJbo6AlmKwhlsAbBKUgD+isn0H5qIsL3ItX6Mg+ro+qj3ItP6Lg+ro+qs6iiLB9x7T+i4Pq6Pqo9x7T+i4Pq6PqrOr56D81EWF7j2g/81wPVkfVVV/sg0yBEsul9MwYDDT8qS7OWpltKNkJDTYONyOd4HHZ4vmq2voPzVr86Zd2kaq6REuywW3XV22PHtkdIXsp5Q5jyjOx6x9vf9TzVBUFWP6GOjbdauA9rmSrXGL93feuBLrSVq5FK5Wtz/wBGlHz05/ca0foqB6sj6q6NI2ePp7StpsUVvkYt0JqK2kDsCEBP+yvV9B+apUrA9xrP+iYHqyPqo9xrP+iYHqyPqrOFFEWD7i2f9EwPVkfVR7i2f9E2/wBWR9VZ9fN/IfmoiwPcWzfom3+rI+qqv/ZBrhbLVpDTtghxY0Z+ZLcmuFqOkZbZRhIJA7C44j5atf6D81a+OnxqUXXjO/aWnnFNWiExD5CPFC1Zecx5T4zPzVChVyqQcPtRXLSur7bfrO71U+E+l6MruKx+Kf1VDKD5leao/RUqVt80HqODq/Rtp1PbSTFuUVEhAPajmG6T5wcg/JRVX+hzxSYsnCR2z3R5k+DXR4xwPF5W3ENukftuOUURUmeccedW66srWtRUpR7SSck1woooiK74MuVBlNSocl6M+0sLbdZcKFoUOwhQ3BHlroooilf3Rdd/HbVX0y/7VZVt11xAmykxY2sdVvPukNtNi8v5UtRCUj4XlUKhVNPorabGqOO2lre4ytyO1NE17HYEsJLm/m5ggemoKgrZfpW3KtGmbZa1vPPLiRGmVOPOKccWpKQCpSlElRJzkk5r0qB5a+1KlLfpM6mXpLgZqm7MSXo0pUIxYrjSilaHXiG0FJG4IKs5HZitcDvETXIcUlGttV4BwP8Ajl/66uD9kQ1H4HorTumWn1IcnTVzXUAbKbYRsCe4c60VRE1HaoUq+6Lrv476q+mX/rrwn7tcn7qbq9cJjk5TgdMlb6lPFYIIUVk55sgHPbsKwaKlSpX90XXfx31V9Mv/AF13xOIGu3XCka11Yo8pwBeHzlWMJGArvUQPTUNph9HXT41Nxl0rZiTyP3JpxzAyC21l1YP7AqCoWzPh3bJFl0HYrVMlyJkmLAZbffkOFbjjgQOZSlHcknNe9QOzb0V9qVKhHHnUytH8HdU6gafSxIjW5xMZajjDyxyN+nmUK1oP8RNcJdUlGt9VFKTgH3Zf3Hl+FV0vsg2oTbuFFtsLSkdZdrklTiSdy0wkuE/tBFa/1VHaoUq+6Nrv476r+mX/AK6j10uE66TXZtxmSZkl1XM49IdLjiz2ZUo7k4A3PkrFoqVKKKKKIsuJcp8RstxZbrKCeYpSrAz5f5qKxKKIiiiiiIooooiKtz9jn011+q9QaodQ5iDARFaJHi876+ZWPPyNI/aqpLSFOOJbQMqUQlI8pNbGegzp9Fn4IN3LlcC71PelJ6wYPVIw016OVsH01CJ80UVxcWlttTi1AJQCpRPcBvUotffT31L7rcZX7U1IWpmzwmIXVlOEhxeXnCDjc4LINVwqWcWdRq1Xr69X8vuOpuE9+UgrTghC1nqxjA26tLdROgRFFFFEX0VaP7Hbp0zuJt21CsoLVqtnIkcuSHH18oOe7xWl/PVXB27VsJ6AmnBaeEU28rDZcu1zc5FJHa2wAyN+/wAZLh9NQoVi6KK+dnadqlSqG/ZCtQeH8T4FkRyKbtFsSCQrdLr6ypQx/IbT89VdNMHpA6h+2fi1qS9DkKZVyeLaknPM02epb/8AK1n/AFqX1ERRRRREUUUURFFFFERRRRREUVzbQpZOO4Ekmp7qrhHrTT7cFUmzyH1S4/X4htuSOqG2y+VHiK37N+w71Wmq4IHtZI4Auva/bbdYOka0gEqFWltxyYkMoWt0fgwgZUVnZGB/KKa208ObIxpjQNh06yoctut7MfcjJKUAEn01qPAcbdGOZK0nbGxBqb2Sza4u+mrrqGGq5OW+1oC5T/hLgSnygZV4xAGVAbpGM7nFZzTxwgOkcANBr46BSXBupW1jmT+Un5xS/wCkbqX7VeCGrLw1J6iQm3rYjrTglLzv3tBHn5lCtcOnbbra/wBuu061rnSGLS0Hpq/dAo6hBCzzHmWMjxFdm9R8S7xdnm7d4TJkqecQlDan1KClEgJ+EcdpFGzxuLmhwu3fXbt15aJmBXnSVBTqsKKkjxUk9uBsP5gK66Zp4GcTez7Up375j+0peXWBKtlzlW6ayWZUV5bDzZIJQtCilQyNjggjatNNiFLVEiCRriN7EH5LFkrH+qbrFor6AScAVJbXoPV1ztzNwgaavEqK8nmbdZhqWhYyRkEdvZW+WeKEXkcAPE2WTnBu5Xg24hMtDp5cNZc8bsJSMgekgD01tc4MWFGk+FOmNPKU0HIVtZQ9ggAuFIUs486iTWt+Vwm1Rb9Hr1LcW41uaS24tMaY4pmUooXykJQRjP4wGTzJ3FfIGieIU820RYVyeNziLmRCmWPvzKOXmWMuDAHOntwd+ztqo3FKNwLhILAkbjcan3LDjM3utp/WN/4xH7QqJ8Y9Sp0pwr1NqFC2+thW15bIKwMuFJCB6VEVrF0bb9Ran1HGslvlvde+VYUuWtKEgA5KlDOBtjOO0jy1Jbxw11g1rK0aOfnRXJV3CiwVTnHGMpBJ5lcux8XsAJ7KymxGmhk4cjwDYu37Buf6Uula02JS1nHMlScghsBsEdh5RjPpxn010VNNMcOdQ6h1lI0xbm4y5Udx1DzqlqDDYbUpKlKVjITzJwDjJJHnxJWOAXEVwzkm0Rm1xSAhtc5vmkEk7NkbZwM4Xy7EVqmxihgdlllaDYHUgaFYmeNpsSlNRU5g8MtSvXy82Z+PHiTLTbV3CQ0471p6tIBwktZClnOwqRRuAmuH4bcnwaI1zhvLbjqw4jmbK/G8TCcdihvhRA3zSXGKGL15QPPmjp427lKSiu6ZGfiSXY0ll1h5pZQ424gpWhQOClQO4IPdXTXpAgi4W5FFFFSiKKKKIp7wbv8ApfTV6fvF+ski7zIyAu1sB1CWRIGcKdB3ONsYBwe4nFWutkm9taen68au1/kuvWp2QxYrn1UZDboAJUBjKUjG2ScA75yKplobVNz0hqBi9WksCS1kDrmQ4kpPaCD6Owg7bEVkax11qbVd2duV5u0iQ8tCmwArkQhsndCUjYJ2GRvnAzmuPxvo7JidUHiwbbUn81x3Q3sB3JBBVGemMr79il+h5nDJq3y75rhq+Xy9iQpwQmPEYeSo8/WKIxjJJyCfkBqa9Ky5TYy9O6PsyRBsj1vbkJt0ZAQ2XCvCQQPhAbYB2zv21XhCllZwSSc5/wBtTTWmq9U61nwblcVtqdhMJjsLjRVJASlWRukEEgjtzVuowc/iEVVmu1ubRx0BsMuUbC2uu/is3QHiB104rBpLUto6PMm1QLHd3LtqaeEyGW2AHmIiCEnmCscuUIxg75X80U19w/svDHX1lnXWHcb3p6ayp0oce6h8vBJ5kFaOUIKVFChv2Ajeo7ceJXFSc2UPapviQe3qgpv/ANDYrxr/AKi1tf7DDsd5uU+fBhuqeZS+24tYWebKisp5lHxiBk4A2xVCjw7EY5nOlkaGvLi4NzXOYWFjp6tgBt263WtkUoNydDunyqdoJrhkrXcvTep4sZc0RIsZzU0nnkknHOg9djlzzfsk9m9LazT+DN31ddpV6s16tttVHa8FaZlOSHC9lRdWtaSonOU9p8tRnXWrNZ6xi2+Len3HGIDIbZaaiKaQDjBWUpTgqI2J28wG+Yj7kzf8S7+4c9mt+H4IY4n8WVwc4nZ7jlFxYAnc6am3aVlHBYG5OviU8nGejiG1FDWqQoJPLkP9uNu6ohwx1VxRnIh6Y0nd7wptkcjTEbl5GwVE7qKCEpz2lR8uM9lL0Wib/iHf3Dns1MNFay1zo6yz7VYJr8JiaoLcKYiipKgAOZKig8pIGCd/Qd63yYWI6dzGO4zja3FOYDx2PPz5hZGGzSBr7UyeklqF9qDpvQcm5e7N2taBKusjPMVySjlSnA7D4yiB3ZQO+mLpKOu2at0FpuSUC42/RkkSWUqyUFRZA+coV81VQhKv8S8t3iO7LRObfEhL5acUvrM55ySk5OfLnNSSLrjiAxrZ7WKLjIN5ebUyt5UQkdWQByBHJgJGBgDvGfLnyqro451KynieLNDzfa73AjYCwbqfZoFpdSnKGg8/eVPeHehb7oLifopuZcGWp93TJEi2suffmWuRSgHMKAIVgHYgApxvjNNS6Xeyo406Pt9xsrs+4SGlO2ueJx5IwKF85CAtQXzBPafN5KrHYtR6rtWvGtZlTs27NuqdLsxh13rFKQUeNsCfFVgAEAbY22r1pHEHW0nW9o1dKZivzrQgoiINvcQylJChgpQBkeMe/wAlYYhgdXWTcSR4J4bhcEt/Mc1gLdguBqdRe97qJIHvdc8j4a6phabmQLhx+jO6a01PtcSFMlJvnVPOSUyklx0dYsb4Tzj4JGMnzCrCMMrRcyXWE9WlfhCuVnIxjGc8u6sbbb42qlumNXassGs39UQmGxKkOOrdaXDdU0ouKKzlOxOFHI328+9ZMbi/ruDerrdHrouU9cY7kdaX1uFprm7220rSltYwANsj5SSaWLdFaqte3guFmsA1JJJue0+3e/IW0WE1I+Q6ck7uDLEyx3fiZJuMtdktbUp90IU0kLbUStwSAhSchIaU2QOzt2ps2lbbjUdfWIW4ppl5hxK3lczRSUpVlQGTvk58uT3VRnTGvr/YrtcLo263PlT7eu3vuXDmfJbURk7q3UOUAZyMbYqYwuP+uI78p1a7ZJEl5S1tvwuZHVlAR1KRzjlb8UHlG+cnJziteL9D62qmdLGRcgeGwA5HkdyomopHOuFCOKLsB7X98dtnU+CLnOlosrUpChzblJVuQVcx9NRmvU1Ve5mor/NvU/qRIlvF1YabDaATthKR2AAAd/pry6+kUsZjgYx24AHPs59q9Rgs0AooooreskUUUURFFFFETb6NelrJeb5dr1qKMibbbHb1TVxFJ5kvKyQkKHYQOVRwdiceSvVl9I/WokqTDg2GJHO7TCYRWG0HdKeYrGSBjJwN87V2dGP+5ziF/oA/0u0obK6xGv0KVKabcZZcYcUl1nrWyAUEhSOxQxnIPb2VyYoafEsTqRVtzhmUNB2Fxc2Hie32KmGNkldn1smz74riEUlSW7GrCiMJgAn5cBzOPP2V998RxD70WIbZJMJIx5j982O3Z21MNYam4S3PRs6325Vi6x+7OymQbS8o5U66VKLbaUqCOQthKwvfZPKAk59B7WXCM3KG4w/Y2nQ0hDLy7MotR7cHWFPQXE9WeZ9TSX0pPKfhEBSecE3/AEZwn9BvuC2dWi7oS5PSQ1+Dgt2UEd3ud/v17cHjJxmnRG5cLTPhUd0ZQ6xp5xaFDzKCsH0Ui754E9dZC7TEfjw1OrLLbmSpKCtRQknJ3CeUHftFXv4MXGAeE2lQidG8S1R0KAeSMKCAFA79oNcx0ngw7BYGSx0jX5jbbbS/JVqoRwNBDAUivus8cPihI/hp32qPus8b/ihI/hp32qtH4dD/AD6P+/T9dHh8Mf8ALo/79P11xXpFR/x7PvyVHrTf0wqujizxw+KEj+Gnfao+6zxw+J8j+Gnfaq0fh8P8+j/v0/XXzw+F+fR/36frp6RUf8ez78k6039MKrv3WeOHxPkfw077VeHN6RHEeHJcjSo1pYebUUrbctZQpJHaCCvIPmq3xnRPz6P+/T9dUW6RLrUzjFqR+G4iQyZYAW0eZJIabCtx5wRXSdGJsPxmodDJRMaAL38wLbKzSvZM4gsAUl98lr/8my/R3+/Xr62lW/ihwTn68l2mLB1HYZTbD78ZPVolNLKPhDfuWCAScEHBwaQJadAyW1/s08NBf4LGvf8APo/9DNdNiOF0eH8KekYGOzsFxpoXAEG24IKtSxMjLS0W1HzSNUOVRHkOK+Vyd/Cr/lGuNdeFcCKKKKIiiiiiIooooiKKKKInp0ZttMcQz/1Af6XaU9qm9W43BasMK5yH1NhrrG3FuKUUpAQkJUM5PYMZyabHRqONJcRj5LAf66k5bZot94izcOZYUy4C2soWCkpVlKhuk7bEYIrncPYHYlWA82f6BVYxeV/kpLOavEC2quM/h7FiQkPqjrffgyUNodScKQSVYCgcjB7wR3GskWnVSpDMdPDAF96MqU02LZK5lsp+E4BzfBGRv+sPKKY+pukFaLnpqRAi2K8R5T1yXJCkTkI5UF1xwHn5VKyrrOVSCCkAkg5Oa7rNx801brZarX7l6nejQmm3VPrnt+EKfbkpkIa5sYUySkoUo+OU8o/FzXu8Bn2SrGQJJG/sc2DpmxD5Wnfbp56I4AcRdV6Ttmo4Ok9FsxLhHTIjh+U4hZbVulRA5sZGD29/dVe73cF3W6yJzqGWlPurcUlpPKkFa1LIA8gKiB5gKvzwQ6QfCO0cJNLWa66tRCn2+1R4klh2I9lDjaAlW4QQR5wSKjq7OX9lMgSjHRg4n/FrQXrrns1997DxP+LOgvXHPZqxvvk+Cfx6jeqv+xX33yXBP49RfVX/AGKdXj5fNMgVcPew8UPi1oH1xz2aXvGTh3q7hW3b3tSaT0mWJ5Wll2KVvJ5kAEpO6cHBz2dxq6PvkuCfx6i+qv8AsVW/pv8AFvQmvrVpu26QvBurkR596QtDC0IbCkBKRlYGSTk7Z2G/dTq8fJTlCrr9srXxa0/6sv26Ptkazn7WrB6uv26j9FOAzkoyhe+vUbSkKT9rdhTkEZEdeR5x49NPQv8Agr69/wA/j/0M0jaeOiNuirrz/SMYf+zXiY8wNhit+pH/ALhaJxYN9o+YSRd/Cr/lGuFc3fwq/lNcK6AbKwNkUUUVKlFFFFERRRRREUUUURPLo3nGi+JJ8mnz/XUtdJXa9tXCLZbVNEYTH2kZWUJQlSwhAUpSknlHZk9gpkdHL+4jiV/3fP8AXUsdO2q9yH27naoanxHcb8bxccyQlYByoeaubo2xmvrOLa12b/8AQKrGAZH3TXvOiOLdutj01Uhp4sy1MLaZksKcCAtaEu4LaRyKU2oA82Tt4ozWYzoDiup9hDl2tzIW0kOLXPYCGZKlISmMtXVHleKnEAIGQc/CrzbprjiZc7NItMyx21cOXNXNktqiJcS8pSlq5VIW6U8oUoKGADlKck43zm+JfFQPMuO2G0PpRyrcbcgo5H5CVtrTKWA6MvBTaSCCE7fB329ThUPJv9Ldkj5JYXDWOrYEx2LKnSmnm1qQtKm2gUqSSlQI5O0EEeirB6C4V3zUOjbTfZevZjDlwioldU3BZIQFjITkjcgHc1Xa46X1ZcZrsyXBkOvOrUta1KbypSlFSj8LtJJPpqxWgOLFy0/omz2OboS4uvW+I3FLjUxnlWEDAVgqyMgA4rmOlEdQIGfhYbmvr6u1v+SqVTXZRwQL+S9r7idz/wAolx9QY9mj7idzz/fEuPqDHs1y+7g//k/u/rjHtUfdwkfEC7euMe1XE5OlHIf4lRtVcvkuP3Ernn++JcfUGPZoPBG5Ht4h3L1Bn6q5DjfI/wAn929dY9qg8cJAH9wF19dY9qmXpRyH+JLVf3ZR/iBwqvWnNF3W/RNeTH3LfGVJ6pyE0kLSncjIGxx2GkbYLxr3UF7FmsztwnzFE8rbLbZJAOCr4GAPOSB56dvEvjBLvejZ2nI+iZzEm9J9zo6nZrJHO74o2SSSfJ3VHtd3+PwVsDejdJLa+2aa2l++3UJBcSVA8rTedk9+M5CUjOCpWa6XB58Rjg4NVG187yct8tg0AXc4t7AfMnQeFqEyBuV4u47bf+LJa4V6+THCtS8QbLYQ4nHUPuocUQRuCeVAHoJ+Wub/AA11vZ+FmoNL6cNi1Paro61IL0CSRIbUgp2ShRKVDCBtzZ3OO4Uu+BGm4HEfiUiJqpyVLadZffePXHrHVISgDmcOV/jZ7e4d1Rt27XPQmtJg05cpcFcWS8yh1pQSopQ6tKeYDxV7JGQoEHfsq/1SskqDTiZpezK/Lw7N3NtQc2hbzPnstmV5dlvqNdtPvRRefGkRJTrEplxl5C1JWhaSlSVA7gg7gjyGserEap9z+M/DCbq2NBYjawsKAbm0wMCYwBnrEjc9mSnO4KVJ3FV4WOVRHb5D5a6bDMQ64xwe3K9hs5u9j7e0Eag8laikzix0IXyiiivTW1FFFFEXs61tIsWqrpaBnEOY/Hwe0dW6tH/xrxqffTd0S7pjjNcri0yEQb1i5MKS3gEqAQ8M95DgCv8AxRSEoiKKKKInh0dDjQvEw/8AZ4/11KSwxGZ+obfDkurZjuvsNvOIbC1IQpSEkhP4xGezvpu9FwN3OFrbTDLqE3C62NTcVK9gsgrBHo6xNLGXpXU0C4KactlyjSWClKh4I8FIUnHeE9xHaD5xXOUM0cWJ1bXmxJafLKBf3ghVY3ASvBTf1HwJtcHTtynRtRPOuwLitpzMDrAWy662lHVtffi4ORKlEDkwrbPKcZNo4GWKfbbVdxeL03EmsMxlsrtTYktS3JCWASg7BsKVzKB8YJAIJ5hSofkcRX4zcZ+56ldZbfXIQhapZCXVghSxt8IhSgT+srynPem6cT0yWZIvequvYjqitOdbM5kMqxzNg4yEnA28w8gx7nWYe8FvztURvUB21XR+C8pha2HVtKLSuZJKFqQcHHZlJx5sVe/gz0cOEN/4T6Wvl4009LuFxtbEuS8bg+jmccQFHCUrAAydgBVHPtZvhIJt00/LDe9inzofj9xg0ppK2abhwIzsW2x0xmC/YX1rDadkgqCk5wMDOBTrMPeCZ2qzHvWeB/xPc+lJX9pR71ngf8T3fpSV/aUgffP8aP0Xbv4dkf2lHvnuNP6Lt/8ADsj+0p1iHvBM7U/fes8D/ie79Kyv7Sq89NTg9oPhzaNOT9HWt62rmPPtSEGU48lYSgKSfvhJBByNu41k++e40/ou3/w7I/tKXPGniHxJ4qtW5jUMIhmAVqabi2l5lPMsAFR+EScDHaB27U6zD3gmdq8HozRmpnG7Tjb6W1IQ667hQG5QytScekA+ivD4vXCTcuI+oJUpXM4q5yBnHYErLaR6EoFZ3DZV10Xri06nkW6WI9vkpcfUYjw5WiClw7o7kqJ9FSDpL6Qcs2t375BbDlmvZ8PiSGxlCisAuJz5c+N8ij5DXhcWNuNhxOj47NPi1xJHtsQfLwWi444PMLL6Is2JE4rxEypLLJdjSW2+sWE8y1BvCRnvPKcDzGotxu0rfNOa3n+68FcdMqQ/Ijr7UPIU6pWUq7DgKGR2jvGMEwRtam1haThQ3Bpmy+MOobtw3laMvjMW7pcS2mNLlJUuQxg9x/GOwwo4UN8lVbJ6KpgxEVkADmuAa4HQgAn8wPhc3B8ipdG5smdut91Iuh6+790ZyAVqMabbpDLzf4qkp5FDPycyvnpOX+M3DvMuI0oqbZfcbSSc7JWUj+YCnl0f4adGaK1DxSuiAhpuGuFa082PCHVK8bl8vjBCM/qqpBvqUt1SlKK1E5UonOT3nPy1jhpEuKVUrPVGRp8XDMT7gQFERvK4hddFFdkZrrnktk8qTupWM8qRuTjzDJrolaTf4OcHV670zIu6VOkNSzH8Ts/BNr/rKKu10UdEjR3BOzxZsJDE+4ldylo6vlKVvYKUnzpQEJ/1aKIuXSh4Wjihw6diQUtJvtuKpNsWsbKVjC2Se5K05HmPKe6tZFxiPwZr0SSy8w8y4ptxt1BQttSThSVJO6VAggg9hFbjqr30nejlA4krXqXTKo9u1OE/f0rHKzcABgBZHwHBsA5g5AwoEYIItdtFSDV2jdSaUvC7RfrRLt89HbHfRhZ86e5ae3xkEj5Kj9EWZZrnPs9yYuVslvRJcdYW080rlUhQ7wf/ANnvprxOkXxHZjNtOXGC8pIwXHLegqV5yQQM+gUnKKoVmF0daQaiJriOYBWt8LJPWF05/fH8Q/zu2/Ryfar774/iJ+d236OT7VJeiqXo1hX7dnwj6LX1WHuhOj3x/ET87tv0cn2qPfH8Q/zq2/RyfapL0U9GsK/bs+EfROqw90J0e+P4h/nVt+jk+1R74/iH+dW36OT7VJeino1hX7dvwj6J1WHuhOj3yHET87tv0cn2qPfH8RPzu2/RyfapL0U9GsJ/bt+EfROqw90JySOkTr6Qwth961OtOJKFoXbUkKSdiCObcV94Z8VbcmwOaJ17avdjTbq8sJR+GhZO3V75KU52APMnuyNgmqKl3R7D+EY2RhtyDduhBGxBGxCnq0drAWT2d4S8OL+6JOkuKtsZYWnn8FuSAHmx5Duk/OM1zh6F4Q6Lc8O1XrpGp5DKiUWu0tj76eUnkVyknHyqSPL50X17v4ygvAwOcBWPnr4p1xSSnmwk7lKRgH0CtP4PWOGR9W7J7Gg/EG38xY+Kx4L9i428vop9xf4kzdazWIcWM3a7Bbk9XbbaxgNspAxzHGxXjbbZI2T2kle0V2MsuvZ6tOQnHMonCU57Mk7D017FJSRUkQhhFmj79/M9q3sYGCwXXT56HvCJ/iHrlFzucZX2uWhxDs5S2zySFjCm44J2OSApXbhIAPwq48AejhqniNIjXS4Ids2miUrVPeawuQjtwwhQ8bI/HUOUZyAqtg+jNM2TR+m4mntPQW4VuiI5W207kk7lSid1KJySo7kmrKyXsJASAAAAO4UV9ooiK+d1FFEXi6u0pprV1t9zdTWODdohOQ3JZC+U+VJO6T5xVZuNHRo4cWeIu52dy9wsN4EcS0vNpx5OtQtY/aoooipRe4rcK7y4jRUUMuqQkqxkgHvxWHRRREUUUURFFFFERRRRREUUUURFFFFERRRRRE2+j5w6smu5y2bvKnMJC+X/AIMWs4/10Kq8PDjo+cLdHoizY1hN1nspTySrq54StJH4yUnxEnzpSKKKIm0kBIAAAAGAB3UUUURfaKKKIv/Z">
+<title>タイムテーブル計算機くん</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #131313;
+  --card2: #1b1b1b;
+  --border: #2a2a2a;
+  --accent: #00e676;
+  --accent2: #2979ff;
+  --danger: #ff5252;
+  --warn: #ff9800;
+  --text: #f0f0f0;
+  --muted: #666;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 16px;
+  max-width: 440px;
+  margin: auto;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--accent);
+  padding: 20px 0 16px;
+  opacity: 0.9;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  user-select: none;
+  transition: background 0.15s;
+}
+.card-header:hover { background: var(--card2); }
+.card-header .chevron { transition: transform 0.25s; font-size: 12px; color: var(--muted); }
+.card-header.open .chevron { transform: rotate(180deg); }
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 16px;
+}
+.card-body.open {
+  max-height: 600px;
+  padding: 0 16px 16px;
+}
+
+/* ===== FORM ===== */
+label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+input[type=text], input[type=date], select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input[type=text]:focus, input[type=date]:focus, select:focus {
+  border-color: var(--accent);
+}
+
+/* slider row */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.slider-row input[type=range] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 4px;
+  background: var(--border);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.slider-row input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+.slider-row input[type=number] {
+  width: 64px;
+  padding: 8px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+.slider-row input[type=number]:focus { border-color: var(--accent); }
+
+/* ===== DJ ROWS ===== */
+.dj-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  cursor: grab;
+}
+.dj-row:active { cursor: grabbing; }
+.dj-row .drag-handle {
+  color: var(--muted);
+  font-size: 16px;
+  cursor: grab;
+  padding: 0 4px;
+  user-select: none;
+}
+.dj-row input {
+  flex: 1;
+  padding: 9px 12px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+.dj-row input:focus { border-color: var(--accent); }
+.dj-row .del-btn {
+  width: 32px; height: 32px;
+  background: transparent;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  color: var(--danger);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.dj-row .del-btn:hover { background: var(--danger); color: #fff; }
+
+.add-dj-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-dj-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 14px 0;
+}
+.btn {
+  padding: 13px 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.btn-generate { background: var(--accent); color: #000; grid-column: 1 / -1; font-size: 15px; }
+.btn-copy    { background: var(--accent2); color: #fff; }
+.btn-save    { background: var(--warn); color: #000; }
+
+/* ===== OUTPUT ===== */
+#output {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  line-height: 2;
+  white-space: pre-line;
+  min-height: 60px;
+  display: none;
+}
+#output.visible { display: block; }
+
+.error-msg {
+  color: var(--danger);
+  font-size: 13px;
+  text-align: center;
+  margin-top: 8px;
+  display: none;
+}
+
+/* ===== IMAGE AREA (offscreen) ===== */
+#imageArea {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  height: 1920px;
+  background: #000;
+  color: #fff;
+  padding: 100px 90px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+#imageTitle {
+  font-size: 96px;
+  font-weight: 900;
+  text-align: center;
+  word-break: break-all;
+  max-width: 100%;
+  line-height: 1.2;
+}
+#imageDate { font-size: 40px; margin-top: 14px; opacity: 0.6; }
+#imageDivider { width: 60%; height: 1px; background: #fff; opacity: 0.2; margin: 50px 0; }
+#imageContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tt-line {
+  display: flex;
+  gap: 40px;
+  align-items: baseline;
+}
+.tt-time {
+  font-family: 'Space Mono', monospace;
+  width: 160px;
+  flex-shrink: 0;
+  text-align: right;
+  opacity: 0.5;
+}
+.tt-body { font-weight: 700; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<h1>タイムテーブル計算機くん</h1>
+
+<!-- イベント -->
+<div class="card">
+  <div class="card-header" onclick="toggleCard(this)">
+    <span>イベント</span><span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <label>イベント名</label>
+    <input type="text" id="eventName" placeholder="EVENT NAME">
+
+    <label>日付</label>
+    <input type="date" id="eventDate">
+
+    <label>開始時間</label>
+    <select id="start"></select>
+
+    <label>終了時間</label>
+    <select id="end"></select>
+
+    <label>REG DJ 人数</label>
+    <div class="slider-row">
+      <input type="range" id="regCount" min="1" max="20" value="5">
+      <input type="number" id="regCountNum" min="1" max="20" value="5">
+    </div>
+    <label>余り時間の振り分け先</label>
+    <select id="extraMode">
+      <option value="first">先頭DJ優先</option>
+      <option value="last">末尾DJ優先</option>
+      <option value="both">両端DJ優先</option>
+      <option value="aroundevent">ゲスト・ライブ前後のDJ優先</option>
+    </select>
+  </div>
+</div>
+
+<!-- DJ -->
+<div class="card">
+  <div class="card-header" onclick="toggleCard(this)">
+    <span>DJ</span><span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div id="djList"></div>
+    <button class="add-dj-btn" onclick="addDJ()">＋ DJ 追加</button>
+  </div>
+</div>
+
+<!-- ゲスト -->
+<div class="card">
+  <div class="card-header" onclick="toggleCard(this)">
+    <span>ゲスト</span><span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <label>持ち時間（分）</label>
+    <div class="slider-row">
+      <input type="range" id="guestMin" min="10" max="120" step="5" value="40">
+      <input type="number" id="guestMinNum" min="10" max="120" value="40">
+    </div>
+
+    <label>開始時間</label>
+    <select id="guestStart"></select>
+
+    <div id="guestList" style="margin-top:10px;"></div>
+    <button class="add-dj-btn" onclick="addGuest()">＋ ゲスト追加</button>
+  </div>
+</div>
+
+<!-- ライブ -->
+<div class="card">
+  <div class="card-header" onclick="toggleCard(this)">
+    <span>ライブ</span><span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <label>持ち時間（分）</label>
+    <div class="slider-row">
+      <input type="range" id="liveMin" min="10" max="120" step="5" value="30">
+      <input type="number" id="liveMinNum" min="10" max="120" value="30">
+    </div>
+
+    <label>開始時間</label>
+    <select id="liveStart"></select>
+
+    <div id="liveList" style="margin-top:10px;"></div>
+    <button class="add-dj-btn" onclick="addLive()">＋ ライブ追加</button>
+  </div>
+</div>
+
+<!-- 履歴 -->
+<div class="card" id="historyCard">
+  <div class="card-header" onclick="toggleCard(this)">
+    <span>履歴</span><span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div id="historyList" style="display:flex;flex-direction:column;gap:8px;"></div>
+    <div id="historyEmpty" style="color:#555;font-size:13px;text-align:center;padding:8px 0;">保存された履歴はありません</div>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="btn btn-generate" onclick="run()">生成</button>
+  <button class="btn btn-copy" id="copyBtn" onclick="copyTT()" disabled>コピー</button>
+  <button class="btn btn-save" id="saveBtn" onclick="saveImage()" disabled>画像保存</button>
+</div>
+
+<div class="error-msg" id="errorMsg"></div>
+<div id="output"></div>
+
+<!-- 画像プレビューモーダル -->
+<div id="imgModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;flex-direction:column;align-items:center;justify-content:space-between;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom));box-sizing:border-box;">
+  <!-- 画像：縦横比維持で画面に収める -->
+  <img id="imgPreview" style="flex:1;min-height:0;max-width:100%;object-fit:contain;border-radius:8px;display:block;">
+  <!-- 操作エリア -->
+  <div style="flex-shrink:0;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:12px;">
+    <div style="color:#aaa;font-size:13px;">長押し（または右クリック）で保存</div>
+    <button onclick="document.getElementById('imgModal').style.display='none'" style="width:100%;background:#333;color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;">閉じる</button>
+  </div>
+</div>
+
+<script>
+/* ===== UTILS ===== */
+const $ = id => document.getElementById(id);
+
+const toMin = t => {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+};
+
+const toTime = m => {
+  // 表示は 24時間超えても "25:00" 形式で表現
+  m = ((m % 1440) + 1440) % 1440;
+  return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+};
+
+const toTime24 = m => {
+  // 24時以降は 00:00, 01:00 のように表記
+  m = ((m % 1440) + 1440) % 1440;
+  return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+};
+
+function fillSelect(id, def) {
+  const el = $(id);
+  el.innerHTML = '';
+  for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m += 30) {
+      const val = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      const o = new Option(val, val);
+      if (val === def) o.selected = true;
+      el.add(o);
+    }
+  }
+}
+
+function bindSlider(rangeId, numId, min, max) {
+  const r = $(rangeId), n = $(numId);
+  const clamp = v => Math.min(max, Math.max(min, v));
+  r.oninput = () => { n.value = r.value; };
+  n.oninput = () => { r.value = clamp(+n.value); n.value = r.value; };
+}
+
+/* ===== CARD TOGGLE ===== */
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const open = body.classList.toggle('open');
+  header.classList.toggle('open', open);
+}
+
+/* ===== DJ LIST ===== */
+function addDJ(name = '') {
+  const row = document.createElement('div');
+  row.className = 'dj-row';
+  row.innerHTML = `
+    <span class="drag-handle">⠿</span>
+    <input type="text" placeholder="DJ 名" value="${name}">
+    <button class="del-btn" onclick="this.parentNode.remove()">×</button>
+  `;
+  $('djList').appendChild(row);
+}
+
+function getDJNames() {
+  return [...$('djList').querySelectorAll('input')].map(i => i.value.trim() || 'DJ');
+}
+
+function addGuest(name = '') {
+  const row = document.createElement('div');
+  row.className = 'dj-row';
+  row.innerHTML = `
+    <span class="drag-handle">⠿</span>
+    <input type="text" placeholder="ゲスト名" value="${name}">
+    <button class="del-btn" onclick="this.parentNode.remove()">×</button>
+  `;
+  $('guestList').appendChild(row);
+}
+
+function addLive(name = '') {
+  const row = document.createElement('div');
+  row.className = 'dj-row';
+  row.innerHTML = `
+    <span class="drag-handle">⠿</span>
+    <input type="text" placeholder="ライブ名" value="${name}">
+    <button class="del-btn" onclick="this.parentNode.remove()">×</button>
+  `;
+  $('liveList').appendChild(row);
+}
+
+function getGuestNames() {
+  return [...$('guestList').querySelectorAll('input')].map(i => i.value.trim() || 'GUEST');
+}
+
+function getLiveNames() {
+  return [...$('liveList').querySelectorAll('input')].map(i => i.value.trim() || 'LIVE');
+}
+
+/* ===== MAIN LOGIC ===== */
+function run() {
+  const errorEl = $('errorMsg');
+  errorEl.style.display = 'none';
+
+  const startMin = toMin($('start').value);
+  let endMin = toMin($('end').value);
+
+  // 終了が翌日になる場合を考慮
+  if (endMin <= startMin) endMin += 1440;
+
+  const totalMin = endMin - startMin;
+  const regCount = parseInt($('regCount').value);
+  const djNames = getDJNames();
+
+  const gCount = $('guestList').querySelectorAll('.dj-row').length;
+  const gMin   = parseInt($('guestMin').value);
+  const lCount = $('liveList').querySelectorAll('.dj-row').length;
+  const lMin   = parseInt($('liveMin').value);
+
+  // ゲスト・ライブの固定時間合計
+  const fixedMin = gCount * gMin + lCount * lMin;
+  const remain = totalMin - fixedMin;
+
+  if (remain <= 0) {
+    showError('ゲスト・ライブだけで時間が埋まっています。時間配分を見直してください。');
+    return;
+  }
+  if (remain < regCount * 5) {
+    showError(`DJ ${regCount}人には時間が足りません（残り${remain}分）。DJ人数か時間帯を調整してください。`);
+    return;
+  }
+
+  // DJ持ち時間を5分単位で均等分配
+  const base = Math.floor(remain / regCount / 5) * 5;
+  let leftover = remain - base * regCount;
+  const extraMode = $('extraMode').value;
+
+  // 余りを振り分けるインデックス列を生成
+  const extraSlots = Math.round(leftover / 5);
+  let extraIdx = [];
+
+  if (extraMode === 'first') {
+    // 先頭から順に
+    for (let i = 0; i < extraSlots; i++) extraIdx.push(i % regCount);
+
+  } else if (extraMode === 'last') {
+    // 末尾から順に
+    for (let i = 0; i < extraSlots; i++) extraIdx.push(regCount - 1 - (i % regCount));
+
+  } else if (extraMode === 'both') {
+    // 両端から交互に（0, N-1, 1, N-2, ...）
+    let lo = 0, hi = regCount - 1, turn = 0;
+    for (let i = 0; i < extraSlots; i++) {
+      if (lo > hi) { lo = 0; hi = regCount - 1; } // 一周したらリセット
+      extraIdx.push(turn % 2 === 0 ? lo++ : hi--);
+      turn++;
+    }
+
+  } else if (extraMode === 'aroundevent') {
+    // ゲスト・ライブを中心に、前後対称に均等振り分け
+    const gCnt = $('guestList').querySelectorAll('.dj-row').length;
+    const lCnt = $('liveList').querySelectorAll('.dj-row').length;
+    const totalEvents = gCnt + lCnt;
+
+    if (totalEvents === 0 || regCount <= 1) {
+      // イベントなし → 先頭と末尾
+      for (let i = 0; i < extraSlots; i++) extraIdx.push(i % 2 === 0 ? 0 : regCount - 1);
+    } else {
+      const gMin2 = parseInt($('guestMin').value);
+      const lMin2 = parseInt($('liveMin').value);
+      const fixedMin2 = gCnt * gMin2 + lCnt * lMin2;
+      const remain2 = (toMin($('end').value) <= toMin($('start').value)
+        ? toMin($('end').value) + 1440 : toMin($('end').value))
+        - toMin($('start').value) - fixedMin2;
+      const baseUnit = Math.floor(remain2 / regCount / 5) * 5 || 5;
+
+      const startAbs = toMin($('start').value);
+      const evTargets = [];
+      let gSt = toMin($('guestStart').value);
+      let lSt = toMin($('liveStart').value);
+      if (gSt < startAbs) gSt += 1440;
+      if (lSt < startAbs) lSt += 1440;
+      for (let i = 0; i < gCnt; i++) evTargets.push(gSt + i * gMin2);
+      for (let i = 0; i < lCnt; i++) evTargets.push(lSt + i * lMin2);
+      evTargets.sort((a, b) => a - b);
+
+      // 各イベントの「挟まれるDJインデックス境界」を求める
+      // イベント直前DJ: Math.floor((et - startAbs) / baseUnit) - 1
+      // イベント直後DJ: Math.floor((et - startAbs) / baseUnit)
+      // そこから外側へ対称に 0,1,2... と広げていく順序リストを作る
+      const pivots = evTargets.map(et => {
+        const pos = (et - startAbs) / baseUnit;
+        // 直前・直後の境界インデックス（0始まり）
+        const before = Math.floor(pos) - 1;
+        const after  = Math.floor(pos);
+        return { before, after };
+      });
+
+      // 優先順リストを生成：各pivotから外側へ対称拡張
+      // 1周目: before, after
+      // 2周目: before-1, after+1
+      // ...
+      const ordered = [];
+      const seen = new Set();
+      const addIdx = i => {
+        if (i >= 0 && i < regCount && !seen.has(i)) {
+          seen.add(i);
+          ordered.push(i);
+        }
+      };
+
+      const maxRadius = regCount;
+      for (let r = 0; r < maxRadius; r++) {
+        pivots.forEach(({ before, after }) => {
+          addIdx(before - r);
+          addIdx(after  + r);
+        });
+        if (ordered.length >= extraSlots) break;
+      }
+
+      for (let i = 0; i < extraSlots; i++) {
+        extraIdx.push(ordered[i % ordered.length]);
+      }
+    }
+  }
+
+  const djDur = new Array(regCount).fill(base);
+  extraIdx.forEach(i => { if (i >= 0 && i < regCount) djDur[i] += 5; });
+
+  // ゲスト・ライブ名
+  const guestArr = getGuestNames().slice(0, gCount);
+  while (guestArr.length < gCount) guestArr.push(`GUEST ${guestArr.length + 1}`);
+  const liveArr = getLiveNames().slice(0, lCount);
+  while (liveArr.length < lCount) liveArr.push(`LIVE ${liveArr.length + 1}`);
+
+  // ゲスト・ライブの開始時間（絶対分）
+  let guestStartMin = toMin($('guestStart').value);
+  let liveStartMin  = toMin($('liveStart').value);
+  if (guestStartMin < startMin) guestStartMin += 1440;
+  if (liveStartMin  < startMin) liveStartMin  += 1440;
+
+  // スケジュール組み立て
+  const slots = buildSlots({
+    startMin, endMin,
+    djNames, djDur,
+    guestArr, gCount, gMin, guestStartMin,
+    liveArr,  lCount, lMin, liveStartMin,
+  });
+
+  if (!slots.length) {
+    showError('スケジュールを生成できませんでした。');
+    return;
+  }
+
+  const text = slots.map(s => `${toTime24(s.t)}  ${s.name}（${s.dur}）`).join('\n');
+  const out = $('output');
+  out.innerText = text;
+  out.classList.add('visible');
+  $('copyBtn').disabled = false;
+  $('saveBtn').disabled = false;
+
+  saveToHistory(captureState());
+}
+
+function buildSlots({ startMin, endMin, djNames, djDur, guestArr, gCount, gMin, guestStartMin, liveArr, lCount, lMin, liveStartMin }) {
+  const slots = [];
+  let t = startMin;
+  let di = 0;
+
+  // ゲスト・ライブを目安時刻順にリスト化
+  const events = [];
+  for (let i = 0; i < gCount; i++) events.push({ target: guestStartMin + i * gMin, name: guestArr[i], dur: gMin });
+  for (let i = 0; i < lCount; i++) events.push({ target: liveStartMin  + i * lMin,  name: liveArr[i],  dur: lMin  });
+  events.sort((a, b) => a.target - b.target);
+
+  let ei = 0;
+
+  while (t < endMin) {
+    const hasEvent = ei < events.length;
+    const hasDJ    = di < djDur.length;
+
+    if (!hasEvent && !hasDJ) break;
+
+    if (!hasEvent) {
+      // イベントなし → 残りDJをすべて入れる
+      const name = di < djNames.length ? djNames[di] : `DJ ${di + 1}`;
+      slots.push({ t, name, dur: djDur[di] });
+      t += djDur[di];
+      di++;
+      continue;
+    }
+
+    if (!hasDJ) {
+      // DJなし → 残りイベントを入れる
+      slots.push({ t, name: events[ei].name, dur: events[ei].dur });
+      t += events[ei].dur;
+      ei++;
+      continue;
+    }
+
+    // DJを1枠丸ごと入れた場合の終了時刻
+    const afterDJ = t + djDur[di];
+    const evTarget = events[ei].target;
+
+    // DJを入れた後の終了時刻がイベント目安を超えていない
+    // または DJを入れた方が目安時刻への誤差が小さい → DJを優先
+    const diffIfDJ   = Math.abs(afterDJ - evTarget);  // DJ入れた後にイベントを置く場合の誤差
+    const diffIfEv   = Math.abs(t - evTarget);         // 今すぐイベントを置く場合の誤差
+
+    if (afterDJ <= evTarget || diffIfDJ <= diffIfEv) {
+      // DJ を先に入れる
+      const name = di < djNames.length ? djNames[di] : `DJ ${di + 1}`;
+      slots.push({ t, name, dur: djDur[di] });
+      t += djDur[di];
+      di++;
+    } else {
+      // イベントを先に入れる
+      slots.push({ t, name: events[ei].name, dur: events[ei].dur });
+      t += events[ei].dur;
+      ei++;
+    }
+  }
+
+  return slots;
+}
+
+function parseNames(raw, count, fallback) {
+  const arr = raw.split(',').map(v => v.trim()).filter(Boolean);
+  while (arr.length < count) arr.push(`${fallback} ${arr.length + 1}`);
+  return arr;
+}
+
+function showError(msg) {
+  const el = $('errorMsg');
+  el.innerText = msg;
+  el.style.display = 'block';
+}
+
+/* ===== COPY ===== */
+function copyTT() {
+  const text = $('output').innerText;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = $('copyBtn');
+    const orig = btn.innerText;
+    btn.innerText = '✓ コピー済';
+    setTimeout(() => btn.innerText = orig, 1500);
+  });
+}
+
+/* ===== IMAGE SAVE ===== */
+function saveImage() {
+  const lines = $('output').innerText.split('\n').filter(v => v.trim());
+  if (!lines.length) return;
+
+  const W = 1080, H = 1920;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  const px = 90;
+
+  const draw = () => {
+    const title = $('eventName').value.trim() || 'EVENT';
+    const dateStr = $('eventDate').value || '';
+
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
+
+    // タイトル
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'center';
+    let titleSize = 96;
+    ctx.font = `900 ${titleSize}px sans-serif`;
+    while (ctx.measureText(title).width > W - px * 2 && titleSize > 40) {
+      titleSize -= 4;
+      ctx.font = `900 ${titleSize}px sans-serif`;
+    }
+    ctx.fillStyle = '#fff';
+    ctx.fillText(title, W / 2, 100 + titleSize);
+
+    // 日付
+    let afterTitle = 100 + titleSize + 20;
+    if (dateStr) {
+      ctx.font = `400 54px sans-serif`;
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fillText(dateStr, W / 2, afterTitle + 54);
+      afterTitle += 90;
+    }
+
+    // 区切り線
+    const divY = afterTitle + 30;
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(px * 2, divY);
+    ctx.lineTo(W - px * 2, divY);
+    ctx.stroke();
+
+    // タイムテーブル
+    const maxLen = Math.max(...lines.map(l => l.length));
+    let fs = 56;
+    if (maxLen > 22) fs = 50;
+    if (maxLen > 26) fs = 44;
+    if (maxLen > 30) fs = 38;
+
+    const lineH = Math.floor(fs * 1.9);
+    const timeW = 155;
+    const bodyX = px + timeW + 32;
+    let y = divY + 100;
+
+    lines.forEach((line, idx) => {
+      const parts = line.trim().split(/\s+/);
+      const time = parts[0];
+      const body = parts.slice(1).join(' ');
+
+      if (idx % 2 === 0) {
+        ctx.fillStyle = 'rgba(255,255,255,0.03)';
+        ctx.fillRect(px - 10, y - fs - 4, W - (px - 10) * 2, lineH);
+      }
+
+      ctx.font = `400 ${fs}px monospace`;
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.textAlign = 'right';
+      ctx.fillText(time, px + timeW, y);
+
+      ctx.font = `700 ${fs}px sans-serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'left';
+      ctx.fillText(body, bodyX, y);
+
+      y += lineH;
+    });
+
+    // モーダルに表示（長押し保存）
+    const modal = document.getElementById('imgModal');
+    const preview = document.getElementById('imgPreview');
+    preview.src = canvas.toDataURL('image/png');
+    modal.style.display = 'flex';
+  };
+
+  document.fonts.ready.then(draw);
+}
+
+
+/* ===== INIT ===== */
+/* ===== HISTORY ===== */
+const HISTORY_KEY = 'tt_history';
+const HISTORY_MAX = 5;
+
+function saveToHistory(state) {
+  const hist = loadHistory();
+  // 同名・同日付の重複は上書き
+  const idx = hist.findIndex(h => h.eventName === state.eventName && h.eventDate === state.eventDate);
+  if (idx !== -1) hist.splice(idx, 1);
+  hist.unshift(state);
+  if (hist.length > HISTORY_MAX) hist.length = HISTORY_MAX;
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); } catch(e) {}
+  renderHistory();
+}
+
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch(e) { return []; }
+}
+
+function renderHistory() {
+  const hist = loadHistory();
+  const list = $('historyList');
+  const empty = $('historyEmpty');
+  list.innerHTML = '';
+  if (!hist.length) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  hist.forEach((h, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;';
+    const label = document.createElement('button');
+    label.style.cssText = 'flex:1;text-align:left;background:#1b1b1b;border:1px solid #2a2a2a;border-radius:8px;color:#f0f0f0;padding:10px 12px;font-size:13px;cursor:pointer;line-height:1.5;';
+    label.innerHTML = `<span style="font-weight:700;">${h.eventName || '(名前なし)'}</span><br><span style="color:#666;font-size:11px;">${h.eventDate || ''} &nbsp; DJ×${h.djNames.length} ゲスト×${h.guestNames.length} ライブ×${h.liveNames.length}</span>`;
+    label.onclick = () => loadFromHistory(h);
+    const del = document.createElement('button');
+    del.style.cssText = 'width:32px;height:32px;background:transparent;border:1px solid #ff5252;border-radius:8px;color:#ff5252;font-size:18px;cursor:pointer;flex-shrink:0;';
+    del.innerHTML = '×';
+    del.onclick = () => deleteHistory(i);
+    row.appendChild(label);
+    row.appendChild(del);
+    list.appendChild(row);
+  });
+}
+
+function deleteHistory(i) {
+  const hist = loadHistory();
+  hist.splice(i, 1);
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); } catch(e) {}
+  renderHistory();
+}
+
+function captureState() {
+  return {
+    eventName:  $('eventName').value,
+    eventDate:  $('eventDate').value,
+    start:      $('start').value,
+    end:        $('end').value,
+    regCount:   $('regCount').value,
+    extraMode:  $('extraMode').value,
+    djNames:    getDJNames(),
+    guestNames: getGuestNames(),
+    liveNames:  getLiveNames(),
+    guestMin:   $('guestMin').value,
+    liveMin:    $('liveMin').value,
+    guestStart: $('guestStart').value,
+    liveStart:  $('liveStart').value,
+  };
+}
+
+function loadFromHistory(h) {
+  $('eventName').value = h.eventName || '';
+  $('eventDate').value = h.eventDate || '';
+  $('start').value     = h.start;
+  $('end').value       = h.end;
+  $('regCount').value  = h.regCount;
+  $('regCountNum').value = h.regCount;
+  $('extraMode').value = h.extraMode || 'first';
+  $('guestMin').value  = h.guestMin;
+  $('guestMinNum').value = h.guestMin;
+  $('liveMin').value   = h.liveMin;
+  $('liveMinNum').value  = h.liveMin;
+  $('guestStart').value = h.guestStart;
+  $('liveStart').value  = h.liveStart;
+
+  $('djList').innerHTML = '';
+  (h.djNames || []).forEach(n => addDJ(n));
+  $('guestList').innerHTML = '';
+  (h.guestNames || []).forEach(n => addGuest(n));
+  $('liveList').innerHTML = '';
+  (h.liveNames || []).forEach(n => addLive(n));
+}
+
+window.onload = () => {
+  fillSelect('start',      '20:00');
+  fillSelect('end',        '24:00');
+  fillSelect('guestStart', '22:00');
+  fillSelect('liveStart',  '21:00');
+
+  // デフォルトDJ 5人
+  for (let i = 0; i < 5; i++) addDJ();
+
+  bindSlider('regCount',   'regCountNum',   1, 20);
+  bindSlider('guestMin',   'guestMinNum',  10, 120);
+  bindSlider('liveMin',    'liveMinNum',   10, 120);
+
+  // DJ並び替え
+  new Sortable($('djList'),    { animation: 150, handle: '.drag-handle' });
+  new Sortable($('guestList'), { animation: 150, handle: '.drag-handle' });
+  new Sortable($('liveList'),  { animation: 150, handle: '.drag-handle' });
+
+  renderHistory();
+};
+</script>
+</body>
+</html>
