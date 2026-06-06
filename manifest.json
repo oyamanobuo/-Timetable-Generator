@@ -1,6 +1,6 @@
 {
   "name": "タイムテーブル計算機くん",
-  "short_name": "TT計算機",
+  "short_name": "タイムテーブル計算機くん",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#111111",
